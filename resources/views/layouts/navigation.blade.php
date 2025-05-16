@@ -1,5 +1,6 @@
-<nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
-    <!-- Primary Navigation Menu -->
+<nav x-data="{ open: false }"
+    class=" sticky top-0 z-50  bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+    <!-- Primary sticky top-0 z-50  Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
@@ -15,7 +16,7 @@
                     <x-nav-link
                         :href="Auth::guard('admin')->check() ? route('admin.dashboard') : route('user.dashboard')"
                         :active="request()->routeIs('user.dashboard') || request()->routeIs('admin.dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('Dashboard Pengguna') }}
                     </x-nav-link>
                 </div>
             </div>

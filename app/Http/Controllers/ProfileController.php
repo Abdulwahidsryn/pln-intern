@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Http\Requests\UserProfileUpdateRequest;
+use App\Http\Requests\UpdateDataDiriRequest; // Tambahkan ini
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
@@ -37,6 +39,17 @@ class ProfileController extends Controller
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
+
+    /**
+     * Update the user's additional data diri.
+     */
+    public function updateDataDiri(UpdateDataDiriRequest $request): RedirectResponse
+{
+    Auth::user()->fill($request->validated());
+    Auth::user()->save();
+
+    return back()->with('success', 'Data diri berhasil disimpan.');
+}
 
     /**
      * Delete the user's account.
